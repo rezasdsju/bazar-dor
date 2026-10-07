@@ -20,7 +20,7 @@ const Marquee = async () => {
         return value.toLocaleString('bn-BD')
     }
     return (
-        <div className="bg-base-200 py-2 px-2">
+        <div className="bg-base-150 py-2 px-2 border-b border-gray-100">
             <MarqueeText direction="right" duration={20}  >
                 {
                     products.map((product:IProduct) => <div key={product.id} className="px-4">
