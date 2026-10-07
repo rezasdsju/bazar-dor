@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { connection } from "next/server";
 
-const Header = () => {
+const Header = async() => {
+    await connection()
     const date = new Date().toLocaleDateString('bn-BD', { dateStyle: 'full' })
     return (
         <div className="flex items-center justify-between max-w-7xl py-2 ">
