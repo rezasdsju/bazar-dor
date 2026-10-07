@@ -1,9 +1,14 @@
-import Image from "next/image";
-import { connection } from "next/server";
+"use client";
 
-const Header = async() => {
-    await connection()
-    const date = new Date().toLocaleDateString('bn-BD', { dateStyle: 'full' })
+import Image from "next/image";
+
+
+
+const Header = () => {
+    
+
+        const date = new Date().toLocaleDateString('bn-BD', { dateStyle: 'full' });
+
     return (
         <div className="flex items-center justify-between max-w-7xl py-2 ">
             <div className="flex items-center gap-2">
