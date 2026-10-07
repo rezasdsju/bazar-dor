@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { Suspense } from "react";
 import NavLinks from "@/components/NavLinks";
+import Marquee from "@/components/Marquee";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   subsets: ["latin","bengali"],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Suspense fallback='Loading'>
           <Header></Header>
           <NavLinks></NavLinks>
+          <Marquee></Marquee>
         </Suspense>
         
         <main>
