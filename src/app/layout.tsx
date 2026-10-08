@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
+import Header from "@/components/shared/Header";
 import { Suspense } from "react";
-import NavLinks from "@/components/NavLinks";
-import Marquee from "@/components/Marquee";
+import NavLinks from "@/components/shared/NavLinks";
+import Marquee from "@/components/shared/Marquee";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   subsets: ["latin","bengali"],

@@ -1,4 +1,4 @@
-import Banner from "@/components/Banner";
+import Banner from "@/components/homepage/Banner";
 import { Suspense } from "react";
 
 export default function Home() {
