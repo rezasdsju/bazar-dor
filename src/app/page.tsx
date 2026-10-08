@@ -1,4 +1,5 @@
 import Banner from "@/components/homepage/Banner";
+import PriceDecreasedProducts from "@/components/homepage/PriceDecreasedProducts";
 import PriceIncreasedProducts from "@/components/homepage/PriceIncreasedProducts";
 import { Suspense } from "react";
 // import { Suspense } from "react";
@@ -11,6 +12,7 @@ export default function Home() {
 <Banner></Banner>
 </Suspense>
 <PriceIncreasedProducts></PriceIncreasedProducts>
+<PriceDecreasedProducts></PriceDecreasedProducts>
     </div>
   );
 }

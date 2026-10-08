@@ -18,9 +18,9 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                         <p className="font-bold">{product.today.toLocaleString('bn-BD')} <span className="text-xs"> টাকা</span></p>
                     </div>
                     <div className="flex items-center">
-                        <div className="flex items-center justify-center gap-1 bg-gray-100 px-5 py-1 rounded-2xl">
-                            <span className="text-[9px] text-red-700"><IoTriangleSharp /></span>
-                            <p className="text-red-700 text-xs">{product.change.pct.toLocaleString('bn-BD')}%</p>
+                        <div className="flex items-center justify-center gap-1 bg-gray-100 px-2 min-[450px]:px-5 py-1 rounded-2xl">
+                            <span className={`text-[9px] ${product.change.dir==='up'?'text-red-700':'text-green-700'}`}>{product.change.dir==='up'?<IoTriangleSharp />:<IoTriangleSharp className="rotate-180" />}</span>
+                            <p className={`${product.change.dir==='up'?'text-red-700':'text-green-700'} text-xs`}>{product.change.pct.toLocaleString('bn-BD')}%</p>
                         </div>
                     </div>
                 </div>
