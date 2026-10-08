@@ -5,8 +5,8 @@ const Banner = async() => {
     await connection()
     const date = new Date().toLocaleDateString('bn-BD', {dateStyle:'full'})
     return (
-<div className="mx-2">
-            <div className="grid grid-cols-1 min-[480px]:grid-cols-2 max-w-7xl mx-auto border border-gray-100 rounded-2xl  my-5 sm:my-10 px-2 sm:px-5 py-3 sm:py-5 ">
+<div className="mx-2 ">
+            <div className="grid grid-cols-1 min-[480px]:grid-cols-2 max-w-7xl mx-auto bg-white border border-gray-200 rounded-2xl  my-5 sm:my-10 px-2 sm:px-5 py-3 sm:py-5 ">
             <div className="space-y-4">
                 <button className="bg-green-50 text-green-500 font-bold text-xl rounded-3xl px-3 py-1">{date}</button>
                 <h2 className="font-bold text-3xl">আজকের বাজারের দাম এক নজরে</h2>
