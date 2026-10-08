@@ -28,7 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
  
-<Suspense>          <Header></Header></Suspense>
+<Suspense fallback={<div className="mx-auto text-2xl text-blue-300 pt-10">Loading...</div>}>          
+<Header></Header>
+</Suspense>
 
         <NavLinks></NavLinks>
         <Marquee></Marquee>
