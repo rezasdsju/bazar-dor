@@ -2,17 +2,7 @@ import { IoTriangleSharp } from "react-icons/io5";
 import MarqueeText from "react-marquee-text";
 import 'react-marquee-text/dist/styles.css'
 
-interface IProduct {
-    id: number,
-    image:string,
-    unit:'kg'|'litre'|'dozen'|'piece',
-    nameBn:string,
-    today:number
-    change:  { 
-        dir: string,
-        pct:number
-    }
-}
+import type { IProduct } from "@/types/type.product";
 const Marquee = async () => {
     'use cache'
     const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products')
