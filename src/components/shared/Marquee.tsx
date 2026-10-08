@@ -5,6 +5,7 @@ import 'react-marquee-text/dist/styles.css'
 interface IProduct {
     id: number,
     image:string,
+    unit:'kg'|'litre'|'dozen'|'piece',
     nameBn:string,
     today:number
     change:  { 
@@ -28,7 +29,7 @@ const Marquee = async () => {
                         <div className="flex items-center gap-2">
                             <span>{product.image}</span>
                             <p className="font-bold">{product.nameBn}</p>
-                            <p className="text-neutral-700">{toBanglaNumber(product.today)} টাকা/কেজি</p>
+                            <p className="text-neutral-700">{toBanglaNumber(product.today)} টাকা/{product.unit==='kg'?'কেজি':product.unit==='dozen'?' ডজেন':product.unit==='litre'?'লিটার':'পিস'}</p>
                             {product.change.dir === 'up' && <span className="flex items-center text-red-700"><IoTriangleSharp /><p>{toBanglaNumber(product.change.pct)}%</p></span>}
                             {product.change.dir === 'down' && <span className="flex items-center text-green-600"><IoTriangleSharp className="rotate-180" /><p>{toBanglaNumber(Math.abs(product.change.pct))}%</p></span>}
                         </div>
