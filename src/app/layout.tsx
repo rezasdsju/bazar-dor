@@ -6,6 +6,7 @@ import Header from "@/components/shared/Header";
 import NavLinks from "@/components/shared/NavLinks";
 import Marquee from "@/components/shared/Marquee";
 import { Suspense } from "react";
+import Footer from "@/components/shared/Footer";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   subsets: ["latin", "bengali"],
@@ -27,18 +28,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${notoSerifBengali.className}  h-full antialiased`}
     >
       <body className="min-h-full flex flex-col ">
- 
-<Suspense fallback={<div className="mx-auto text-2xl text-blue-300 pt-10">Loading...</div>}>          
-<Header></Header>
-</Suspense>
-<NavLinks></NavLinks>
-<div className="bg-gray-50">
-          
-        <Marquee></Marquee>
-        <main>
-          {children}
-        </main>
-</div>
+
+        <Suspense fallback={<div className="mx-auto text-2xl text-blue-300 pt-10">Loading...</div>}>
+          <Header></Header>
+        </Suspense>
+        <NavLinks></NavLinks>
+        <div className="bg-gray-50">
+
+          <Marquee></Marquee>
+          <main>
+            {children}
+          </main>
+          <Footer></Footer>
+        </div>
       </body>
     </html>
   );
