@@ -1,6 +1,7 @@
 import { connection } from "next/server";
 import Image from "next/image";
 import BannerImage from '@/assets/bazar-hero.png'
+import BrowseButton from "./BrowseButton";
 const Banner = async() => {
     await connection()
     const date = new Date().toLocaleDateString('bn-BD', {dateStyle:'full'})
@@ -11,7 +12,7 @@ const Banner = async() => {
                 <button className="bg-green-50 text-green-500 font-bold text-xl rounded-3xl px-3 py-1">{date}</button>
                 <h2 className="font-bold text-3xl">আজকের বাজারের দাম এক নজরে</h2>
                 <p>চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।</p>
-                <button className="bg-green-600 text-white rounded-xl px-4 py-1">সব পণ্য দেখুন</button>
+                <BrowseButton></BrowseButton>
             </div>
             <div className="mx-auto">
                 <Image src={BannerImage} alt="Banner" width={220} height={220} className="mx-auto"></Image>

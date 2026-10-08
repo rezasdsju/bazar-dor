@@ -9,7 +9,7 @@ const AllProducts = async () => {
     const products: IProduct[] = await res.json()
     
     return (
-        <div className="mx-2 my-8">
+        <div className="mx-2 my-8" id='all-products'>
             <div className="max-w-7xl mx-auto ">
                 <div className="mb-2">
                     <h3 className="text-xl font-bold">সব পণ্য</h3>
