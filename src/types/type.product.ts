@@ -5,7 +5,7 @@ export interface IProduct {
     nameBn:string,
     today:number
     change:  { 
-        dir: string,
+        dir: 'up'|'down'|'flat',
         pct:number
     }
 }

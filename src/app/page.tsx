@@ -1,3 +1,4 @@
+import AllProducts from "@/components/homepage/AllProducts";
 import Banner from "@/components/homepage/Banner";
 import PriceDecreasedProducts from "@/components/homepage/PriceDecreasedProducts";
 import PriceIncreasedProducts from "@/components/homepage/PriceIncreasedProducts";
@@ -13,6 +14,7 @@ export default function Home() {
 </Suspense>
 <PriceIncreasedProducts></PriceIncreasedProducts>
 <PriceDecreasedProducts></PriceDecreasedProducts>
+<AllProducts></AllProducts>
     </div>
   );
 }
