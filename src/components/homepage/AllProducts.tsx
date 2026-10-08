@@ -7,7 +7,7 @@ const AllProducts = async () => {
     'use cache'
     const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products')
     const products: IProduct[] = await res.json()
-
+    
     return (
         <div className="mx-2 my-8">
             <div className="max-w-7xl mx-auto ">
