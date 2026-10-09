@@ -14,7 +14,7 @@ const SignUpPage = () => {
         const formData = new FormData(e.currentTarget)
         const userData = Object.fromEntries(formData.entries()) as { name: string, email: string, password: string, ensurePassword: string }
         const strongPassword =
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/.test(userData.password);
+            /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/.test(userData.password);
 
         if (!strongPassword) {
             toast.error('অনুগ্রহ করে শক্তিশালী পাসওয়ার্ড ব্যবহার করুন');
