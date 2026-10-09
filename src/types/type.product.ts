@@ -2,6 +2,7 @@ export interface IProduct {
     id: number,
     slug:string,
     image:string,
+    category:string,
     categoryNameBn:string,
     categoryIcon:string,
     unit:'kg'|'litre'|'dozen'|'piece',
