@@ -1,9 +1,37 @@
+'use client'
 import { AiFillGithub } from "react-icons/ai";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
+import React from "react";
+import { signUp } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 const SignUpPage = () => {
+    const handleSignUp = async(e:React.SubmitEvent<HTMLFormElement>)=>{
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget) 
+        const userData = Object.fromEntries(formData.entries()) as {name:string, email:string, password:string, ensurePassword:string}
+        if (userData.password!==userData.ensurePassword){
+            toast.error('পাসওয়ার্ড মিল হয় নি!')
+            return
+        }
+        // console.log('user data before submit: ',userData)
+        const {data:resData, error} = await signUp.email({
+            name: userData.name,
+            email: userData.email,
+            password: userData.password
+        })
+        if (resData){
+            toast.success('সাইন আপ সফলভাবে সম্পন্ন হয়েছে')
+            redirect('/')
+        }
+        if (error){
+            toast.error('সাইন আপ সম্পন্ন হয়নি')
+        }
+        // console.log('resData: ',resData)
+    }
     return (
         <div className="max-w-120 mx-auto my-10 px-2">
             <div className="text-center my-4">
@@ -11,20 +39,20 @@ const SignUpPage = () => {
                 <p className="text-neutral-500">বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।</p>
             </div>
             <div className=" border border-gray-200  bg-white  rounded-2xl px-2 min-[380px]:px-5 py-2">
-                <form >
+                <form onSubmit={handleSignUp}>
                     <fieldset className="fieldset bg-white  rounded-box   ">
 
 
                         <label className="label">নাম</label>
-                        <input type="email" className="input w-full" placeholder="রহিম উদ্দিন" required/>
+                        <input name="name" type="text" className="input w-full" placeholder="রহিম উদ্দিন" required/>
 
                         <label className="label">ইমেইল</label>
-                        <input type="email" className="input w-full" placeholder="you@example.com" required/>
+                        <input name="email" type="email" className="input w-full" placeholder="you@example.com" required/>
 
                         <label className="label">পাসওয়ার্ড</label>
-                        <input type="password" className="input w-full" placeholder="কমপক্ষে ৮ অক্ষর" required/>
+                        <input name='password' type="password" className="input w-full" placeholder="কমপক্ষে ৮ অক্ষর" required/>
                         <label className="label">পাসওয়ার্ড নিশ্চিত করুন</label>
-                        <input type="password" className="input w-full" placeholder="পাসওয়ার্ড নিশ্চিত করুন" required/>
+                        <input name="ensurePassword" type="password" className="input w-full" placeholder="পাসওয়ার্ড নিশ্চিত করুন" required/>
 
                         <button type="submit" className="btn bg-green-600 text-white mt-4">অ্যাকাউন্ট তৈরি করুন</button>
                     </fieldset>
