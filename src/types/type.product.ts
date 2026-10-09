@@ -1,5 +1,6 @@
 export interface IProduct {
     id: number,
+    slug:string,
     image:string,
     categoryNameBn:string,
     categoryIcon:string,
