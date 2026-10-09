@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bazar Dor 🛒
 
-## Getting Started
+**Bazar Dor** is a web application that tracks the prices of essential commodities and helps users compare prices across different markets, divisions, and time periods. It provides insights into daily price changes, making it easier to monitor price increases and decreases.
 
-First, run the development server:
+## 🔗 Live Demo
+
+[Visit Bazar Dor](https://bazar-dor-two.vercel.app/)
+
+## ✨ Features
+
+- **Price Change Marquee:** View product price changes and percentage increases or decreases.
+- **Browse by Category:** Explore products organized by category.
+- **Most Price-Increased Products:** Discover products with the highest price increases.
+- **Most Price-Decreased Products:** Find products with the largest price decreases.
+- **All Products:** Browse the complete product collection.
+- **Product Details:** View detailed product information and price comparisons across markets and divisions, as well as historical prices from previous days and weeks.
+- **Email Authentication:** Sign up and sign in using email and password.
+- **Social Authentication:** Sign in using Google and GitHub.
+- **Profile Management:** View your profile and update your profile information.
+
+## 🛠️ Technologies Used
+
+- **Next.js** — React framework for building the web application
+- **TypeScript** — Type-safe JavaScript development
+- **Tailwind CSS** — Utility-first styling
+- **DaisyUI** — Tailwind CSS component library
+- **React Toastify** — Toast notifications
+- **React Icons** — Icon library
+- **Better Auth** — Authentication
+- **MongoDB** — Database
+
+## 📁 Project Structure
+
+```text
+bazar-dor/
+├── public/
+│   ├── bazar-hero.png
+│   ├── logo-icon.png
+│   └── ...
+├── src/
+│   ├── app/
+│   │   ├── (auth)/
+│   │   ├── api/
+│   │   ├── categoryDetail/
+│   │   ├── productDetail/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── loading.tsx
+│   │   └── page.tsx
+│   ├── assets/
+│   ├── components/
+│   │   ├── categoryDetails/
+│   │   ├── homepage/
+│   │   ├── productDetails/
+│   │   └── shared/
+│   ├── lib/
+│   │   ├── auth-client.ts
+│   │   └── auth.ts
+│   └── types/
+├── .env
+├── .gitignore
+├── package.json
+├── next.config.ts
+├── tsconfig.json
+└── README.md
+```
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/)
+- npm
+- A MongoDB database connection
+- The required authentication environment variables
+
+### Installation
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/rezasdsju/bazar-dor.git
+```
+
+**2. Navigate to the project directory**
+
+```bash
+cd bazar-dor
+```
+
+**3. Install dependencies**
+
+```bash
+npm install
+```
+
+**4. Configure environment variables**
+
+Create a `.env` file in the project root and add the environment variables required by your MongoDB connection and Better Auth configuration.
+
+```env
+# Add your actual environment variables here
+```
+
+Use your own credentials and follow the project's configuration. Never commit your `.env` file or expose secret keys.
+
+**5. Start the development server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**6. Open the application**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👨‍💻 Author
 
-## Learn More
+**Rezaul Karim Rifat**
 
-To learn more about Next.js, take a look at the following resources:
+- GitHub: [@rezasdsju](https://github.com/rezasdsju)
+- Portfolio: [Developer Portfolio](https://developer-portfolio-1e1b.vercel.app/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you find this project useful, feel free to explore the repository and share your feedback.
