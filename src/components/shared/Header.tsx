@@ -26,7 +26,7 @@ const Header = async () => {
                 </Link>
                 <div className="flex items-center gap-2 ">
                     <button className="font-bold">সাইন ইন</button>
-                    <button className="btn bg-green-600 font-bold text-white">সাইন আপ</button>
+                    <Link href={`/sign-up`}><button className="btn bg-green-600 font-bold text-white">সাইন আপ</button></Link>
                 </div>
             </div>
         </div>
