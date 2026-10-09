@@ -1,14 +1,16 @@
 'use client'
 import { AiFillGithub } from "react-icons/ai";
-import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowLeftLong} from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import React from "react";
+// import {useState} from 'react'
 import { signUp } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 
 const SignUpPage = () => {
+    // const [showPassword, setShowPassword] = useState(false)
     const handleSignUp = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
@@ -57,9 +59,10 @@ const SignUpPage = () => {
                         <input name="email" type="email" className="input w-full" placeholder="you@example.com" required />
 
                         <label className="label">পাসওয়ার্ড</label>
-                        <input name='password' type="password" className="input w-full" placeholder="কমপক্ষে ৮ অক্ষর" required />
+                        <input name='password' type='password' className="input w-full" placeholder="কমপক্ষে ৮ অক্ষর" required />
+                        {/* <button type='button' className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500" onClick={()=>setShowPassword(!showPassword)}>{showPassword?<FaRegEyeSlash />:<FaEye />}</button> */}
                         <label className="label">পাসওয়ার্ড নিশ্চিত করুন</label>
-                        <input name="ensurePassword" type="password" className="input w-full" placeholder="পাসওয়ার্ড নিশ্চিত করুন" required />
+                        <input name="ensurePassword" type='password' className="input w-full" placeholder="পাসওয়ার্ড নিশ্চিত করুন" required />
 
                         <button type="submit" className="btn bg-green-600 text-white mt-4">অ্যাকাউন্ট তৈরি করুন</button>
                     </fieldset>
