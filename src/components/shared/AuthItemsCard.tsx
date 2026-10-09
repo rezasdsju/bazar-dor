@@ -12,7 +12,7 @@ const AuthItemsCard = ({setShowAuthItems}:{setShowAuthItems:React.Dispatch<React
     const handleSignOut = async () => {
         const { data: resData, error } = await signOut()
         if (resData) {
-            toast.success('সফলভাবে সাইন আউট সম্পন্ন হয়েছে!')
+            // toast.success('সফলভাবে সাইন আউট সম্পন্ন হয়েছে!')
             redirect('/')
         }
         if (error) {

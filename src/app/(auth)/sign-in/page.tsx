@@ -21,7 +21,7 @@ const SignInPage = () => {
         })
         console.log('resData: ',resData)
         if (resData){
-            toast.success('সফলভাবে সাইন ইন সম্পন্ন হয়েছে')
+            // toast.success('সফলভাবে সাইন ইন সম্পন্ন হয়েছে')
             redirect('/')
         }
         if (error){
