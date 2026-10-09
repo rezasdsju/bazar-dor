@@ -3,8 +3,31 @@ import { AiFillGithub } from "react-icons/ai";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
+import React from "react";
+import { signIn } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 const SignInPage = () => {
+    const handleSignIn = async(e:React.SubmitEvent<HTMLFormElement>)=>{
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget)
+        const userData = Object.fromEntries(formData.entries()) as {email:string, password:string}
+        console.log('userData: ',userData)
+        const {data:resData, error} = await signIn.email({
+            email:userData.email,
+            password:userData.password,
+            
+        })
+        console.log('resData: ',resData)
+        if (resData){
+            toast.success('সফলভাবে সাইন ইন সম্পন্ন হয়েছে')
+            redirect('/')
+        }
+        if (error){
+            toast.error('সাইন ইন সম্পন্ন হয় নি')
+        }
+    }
     return (
         <div className="max-w-120 mx-auto my-10 px-2">
             <div className="text-center my-4">
@@ -12,16 +35,16 @@ const SignInPage = () => {
                 <p className="text-neutral-500">বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।</p>
             </div>
             <div className=" border border-gray-200  bg-white  rounded-2xl px-2 min-[380px]:px-5 py-2">
-                <form >
+                <form onSubmit={handleSignIn}>
                     <fieldset className="fieldset bg-white  rounded-box   ">
 
 
 
                         <label className="label">ইমেইল</label>
-                        <input type="email" className="input w-full" placeholder="you@example.com" required/>
+                        <input name="email" type="email" className="input w-full" placeholder="you@example.com" required/>
 
                         <label className="label">পাসওয়ার্ড</label>
-                        <input type="password" className="input w-full" placeholder="কমপক্ষে ৮ অক্ষর" required/>
+                        <input name="password" type="password" className="input w-full" placeholder="কমপক্ষে ৮ অক্ষর" required/>
 
                         <button type="submit" className="btn bg-green-600 text-white mt-4">সাইন ইন</button>
                     </fieldset>
