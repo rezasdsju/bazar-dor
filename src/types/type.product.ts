@@ -12,5 +12,6 @@ export interface IProduct {
     change:  { 
         dir: 'up'|'down'|'flat',
         pct:number
-    }
+    },
+    markets:[market:string,division:string,min:number, max:number]
 }
