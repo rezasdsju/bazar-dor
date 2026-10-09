@@ -34,7 +34,7 @@ const SignUpPage = () => {
         })
         if (resData) {
             toast.success('সাইন আপ সফলভাবে সম্পন্ন হয়েছে')
-            redirect('/')
+            redirect('/sign-in')
         }
         if (error) {
             toast.error('সাইন আপ সম্পন্ন হয়নি')
