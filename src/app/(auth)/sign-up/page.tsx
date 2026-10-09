@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import React from "react";
 // import {useState} from 'react'
-import { signUp } from "@/lib/auth-client";
+import { signIn, signUp } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 
@@ -41,6 +41,13 @@ const SignUpPage = () => {
         }
         // console.log('resData: ',resData)
     }
+
+    const handleGoogleSignIn = async()=>{
+        const data = await signIn.social({
+            provider:'google'
+        })
+        console.log('google sign in data: ',data)
+    }
     return (
         <div className="max-w-120 mx-auto my-10 px-2">
             <div className="text-center my-4">
@@ -74,17 +81,17 @@ const SignUpPage = () => {
                         <div className="col-span-5 flex items-center border-t border-gray-200" ></div>
                     </div>
                     <div className="flex gap-3">
-                        <div className='flex items-center border border-gray-200 rounded-xl px-3 py-1 gap-1'>
+                        <div onClick={handleGoogleSignIn} className='flex items-center border border-gray-200 rounded-xl px-3 py-1 gap-1'>
                             <span><FcGoogle /></span>
-                            <h3>Google দিয়ে চালিয়ে যান</h3>
+                            <button >Google দিয়ে চালিয়ে যান</button>
                         </div>
                         <div className='flex items-center border border-gray-200 rounded-xl px-3 py-1 gap-1'>
                             <span><AiFillGithub /></span>
-                            <h3>GitHub দিয়ে চালিয়ে যান</h3>
+                            <button>GitHub দিয়ে চালিয়ে যান</button>
                         </div>
                     </div>
                     <div className="flex items-center justify-center my-3">
-                        <span className="font-bold">অ্যাকাউন্ট আছে? <span className="text-green-500">সাইন ইন করুন</span></span>
+                        <span className="font-bold">অ্যাকাউন্ট আছে? <Link href={`/sign-in`}><span className="text-green-500">সাইন ইন করুন</span></Link></span>
                     </div>
                 </div>
             </div>

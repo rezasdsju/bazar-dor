@@ -28,6 +28,13 @@ const SignInPage = () => {
             toast.error('সাইন ইন সম্পন্ন হয় নি')
         }
     }
+
+    const handleGoogleSignIn = async()=>{
+        const data = await signIn.social({
+            provider:'google'
+        })
+        console.log('google sign in data: ',data)
+    }
     return (
         <div className="max-w-120 mx-auto my-10 px-2">
             <div className="text-center my-4">
@@ -56,7 +63,7 @@ const SignInPage = () => {
                         <div className="col-span-5 flex items-center border-t border-gray-200" ></div>
                     </div>
                     <div className="flex gap-3">
-                        <div className='flex items-center border border-gray-200 rounded-xl px-3 py-1 gap-1'>
+                        <div onClick={handleGoogleSignIn} className='flex items-center border border-gray-200 rounded-xl px-3 py-1 gap-1'>
                             <span><FcGoogle /></span>
                             <h3>Google দিয়ে চালিয়ে যান</h3>
                         </div>
