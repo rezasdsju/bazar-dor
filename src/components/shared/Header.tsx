@@ -2,6 +2,7 @@
 
 
 import Image from "next/image";
+import Link from "next/link";
 import { connection } from "next/server";
 
 
@@ -14,7 +15,7 @@ const Header = async () => {
 
         <div>
             <div className="flex items-center justify-between max-w-7xl mx-auto py-2 px-2">
-                <div className="flex items-center gap-2">
+                <Link href='/' className="flex items-center gap-2">
 
                     <button className="btn bg-green-700 rounded-2xl py-6"><Image src={'/logo-icon.png'} alt="বাজার দর" width={20} height={20}></Image></button>
                     <div>
@@ -22,7 +23,7 @@ const Header = async () => {
                         <p className="text-sm min-[400px]:text-base text-neutral-700">{date}</p>
                     </div>
 
-                </div>
+                </Link>
                 <div className="flex items-center gap-2 ">
                     <button className="font-bold">সাইন ইন</button>
                     <button className="btn bg-green-600 font-bold text-white">সাইন আপ</button>
