@@ -1,9 +1,9 @@
-
+import Link from "next/link";
 import type { IProduct } from "@/types/type.product";
 import { IoTriangleSharp } from "react-icons/io5";
 const ProductCard = ({ product }: { product: IProduct }) => {
     return (
-        <div>
+        <Link href={`/productDetail/${product.id}`}>
             <div className="bg-white border border-gray-200 rounded-xl px-2 py-2">
                 <div className="flex items-center gap-2  ">
                     <span className="px-3 py-2 rounded-xl bg-gray-200">{product.image}</span>
@@ -25,7 +25,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
