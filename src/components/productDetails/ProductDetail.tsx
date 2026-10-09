@@ -1,10 +1,16 @@
 import type { IProduct } from "@/types/type.product";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { IoTriangleSharp } from "react-icons/io5";
 const ProductDetail = async ({ params }: { params: { productId: string } }) => {
     const { productId } = await params
     const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products/${productId}`)
+    if (!res.ok){
+        notFound()
+    }
     const product: IProduct = await res.json()
+
+
     const minPrices = product.markets.map((market) => market.min)
     const minPrice = Math.min(...minPrices)
     const maxPrices = product.markets.map((market) => market.max)

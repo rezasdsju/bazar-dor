@@ -1,10 +1,14 @@
 import type { IProduct } from "@/types/type.product";
 import SortProduct from "./SortProduct";
+import { notFound } from "next/navigation";
 const Details = async({params}:{params:{slug:string}}) => {
     'use cache'
     const { slug } = await params
     const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products?category=${slug}`)
     const products: IProduct[] = await res.json()
+    if (!products || products.length === 0){
+        notFound()
+    }
     const categoryName = products[0].categoryNameBn
     return (
         <div className="bg-gray-50">
