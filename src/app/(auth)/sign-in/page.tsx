@@ -35,6 +35,12 @@ const SignInPage = () => {
         })
         console.log('google sign in data: ',data)
     }
+    const handleGithubSignIn = async()=>{
+        const data = await signIn.social({
+            provider:'github'
+        })
+        console.log('github sign in data: ',data)
+    }
     return (
         <div className="max-w-120 mx-auto my-10 px-2">
             <div className="text-center my-4">
@@ -63,13 +69,13 @@ const SignInPage = () => {
                         <div className="col-span-5 flex items-center border-t border-gray-200" ></div>
                     </div>
                     <div className="flex gap-3">
-                        <div onClick={handleGoogleSignIn} className='flex items-center border border-gray-200 rounded-xl px-3 py-1 gap-1'>
+                        <div onClick={handleGoogleSignIn} className='flex items-center border border-gray-200 rounded-xl px-3 py-1 gap-1 cursor-pointer'>
                             <span><FcGoogle /></span>
-                            <h3>Google দিয়ে চালিয়ে যান</h3>
+                            <button className="cursor-pointer">Google দিয়ে চালিয়ে যান</button>
                         </div>
-                        <div className='flex items-center border border-gray-200 rounded-xl px-3 py-1 gap-1'>
+                        <div onClick={handleGithubSignIn} className='flex items-center border border-gray-200 rounded-xl px-3 py-1 gap-1 cursor-pointer'>
                             <span><AiFillGithub /></span>
-                            <h3>GitHub দিয়ে চালিয়ে যান</h3>
+                            <button className="cursor-pointer">GitHub দিয়ে চালিয়ে যান</button>
                         </div>
                     </div>
                     <div className="flex items-center justify-center my-3">
