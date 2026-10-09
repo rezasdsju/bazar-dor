@@ -9,25 +9,32 @@ import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 
 const SignUpPage = () => {
-    const handleSignUp = async(e:React.SubmitEvent<HTMLFormElement>)=>{
+    const handleSignUp = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const formData = new FormData(e.currentTarget) 
-        const userData = Object.fromEntries(formData.entries()) as {name:string, email:string, password:string, ensurePassword:string}
-        if (userData.password!==userData.ensurePassword){
+        const formData = new FormData(e.currentTarget)
+        const userData = Object.fromEntries(formData.entries()) as { name: string, email: string, password: string, ensurePassword: string }
+        const strongPassword =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/.test(userData.password);
+
+        if (!strongPassword) {
+            toast.error('অনুগ্রহ করে শক্তিশালী পাসওয়ার্ড ব্যবহার করুন');
+            return;
+        }
+        if (userData.password !== userData.ensurePassword) {
             toast.error('পাসওয়ার্ড মিল হয় নি!')
             return
         }
         // console.log('user data before submit: ',userData)
-        const {data:resData, error} = await signUp.email({
+        const { data: resData, error } = await signUp.email({
             name: userData.name,
             email: userData.email,
             password: userData.password
         })
-        if (resData){
+        if (resData) {
             toast.success('সাইন আপ সফলভাবে সম্পন্ন হয়েছে')
             redirect('/')
         }
-        if (error){
+        if (error) {
             toast.error('সাইন আপ সম্পন্ন হয়নি')
         }
         // console.log('resData: ',resData)
@@ -44,15 +51,15 @@ const SignUpPage = () => {
 
 
                         <label className="label">নাম</label>
-                        <input name="name" type="text" className="input w-full" placeholder="রহিম উদ্দিন" required/>
+                        <input name="name" type="text" className="input w-full" placeholder="রহিম উদ্দিন" required />
 
                         <label className="label">ইমেইল</label>
-                        <input name="email" type="email" className="input w-full" placeholder="you@example.com" required/>
+                        <input name="email" type="email" className="input w-full" placeholder="you@example.com" required />
 
                         <label className="label">পাসওয়ার্ড</label>
-                        <input name='password' type="password" className="input w-full" placeholder="কমপক্ষে ৮ অক্ষর" required/>
+                        <input name='password' type="password" className="input w-full" placeholder="কমপক্ষে ৮ অক্ষর" required />
                         <label className="label">পাসওয়ার্ড নিশ্চিত করুন</label>
-                        <input name="ensurePassword" type="password" className="input w-full" placeholder="পাসওয়ার্ড নিশ্চিত করুন" required/>
+                        <input name="ensurePassword" type="password" className="input w-full" placeholder="পাসওয়ার্ড নিশ্চিত করুন" required />
 
                         <button type="submit" className="btn bg-green-600 text-white mt-4">অ্যাকাউন্ট তৈরি করুন</button>
                     </fieldset>

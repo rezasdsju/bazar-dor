@@ -1,3 +1,4 @@
+'use client'
 import { AiFillGithub } from "react-icons/ai";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
