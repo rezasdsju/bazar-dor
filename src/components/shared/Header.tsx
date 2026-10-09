@@ -4,6 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { connection } from "next/server";
+import AuthButtons from "./AuthButtons";
 
 
 const Header = async () => {
@@ -24,10 +25,7 @@ const Header = async () => {
                     </div>
 
                 </Link>
-                <div className="flex items-center gap-2 ">
-                    <Link href={`/sign-in`}><button className="font-bold cursor-pointer">সাইন ইন</button></Link>
-                    <Link href={`/sign-up`}><button className="btn bg-green-600 font-bold text-white">সাইন আপ</button></Link>
-                </div>
+                <AuthButtons></AuthButtons>
             </div>
         </div>
 
