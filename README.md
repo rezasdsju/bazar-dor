@@ -33,36 +33,78 @@
 
 ```text
 bazar-dor/
+├── .env
+├── .gitignore
+├── README.md
+├── AGENTS.md
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── tsconfig.json
 ├── public/
 │   ├── bazar-hero.png
+│   ├── favicon-1.ico
+│   ├── favicon.ico
+│   ├── file.svg
+│   ├── globe.svg
 │   ├── logo-icon.png
-│   └── ...
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
 ├── src/
 │   ├── app/
 │   │   ├── (auth)/
+│   │   │   ├── my-profile/
+│   │   │   │   └── page.tsx
+│   │   │   ├── sign-in/
+│   │   │   │   └── page.tsx
+│   │   │   └── sign-up/
+│   │   │       └── page.tsx
 │   │   ├── api/
 │   │   ├── categoryDetail/
+│   │   │   ├── [slug]/
+│   │   │   │   └── page.tsx
+│   │   │   ├── loading.tsx
+│   │   │   └── not-found.tsx
 │   │   ├── productDetail/
+│   │   │   ├── [productId]/
+│   │   │   │   └── page.tsx
+│   │   │   └── not-found.tsx
 │   │   ├── globals.css
 │   │   ├── layout.tsx
 │   │   ├── loading.tsx
+│   │   ├── not-found.tsx
 │   │   └── page.tsx
 │   ├── assets/
 │   ├── components/
 │   │   ├── categoryDetails/
+│   │   │   ├── Details.tsx
+│   │   │   └── SortProduct.tsx
 │   │   ├── homepage/
+│   │   │   ├── AllProducts.tsx
+│   │   │   ├── Banner.tsx
+│   │   │   ├── BrowseButton.tsx
+│   │   │   ├── PriceDecreasedProducts.tsx
+│   │   │   └── PriceIncreasedProducts.tsx
 │   │   ├── productDetails/
+│   │   │   └── ProductDetail.tsx
 │   │   └── shared/
+│   │       ├── AuthButtons.tsx
+│   │       ├── AuthItemsCard.tsx
+│   │       ├── Footer.tsx
+│   │       ├── Header.tsx
+│   │       ├── Marquee.tsx
+│   │       ├── NavItem.tsx
+│   │       ├── NavLinks.tsx
+│   │       └── ProductCard.tsx
 │   ├── lib/
 │   │   ├── auth-client.ts
 │   │   └── auth.ts
+│   ├── proxy.ts
 │   └── types/
-├── .env
-├── .gitignore
-├── package.json
-├── next.config.ts
-├── tsconfig.json
-└── README.md
+└── ...
 ```
 
 ## 🚀 Getting Started
