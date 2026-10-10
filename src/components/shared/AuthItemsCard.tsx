@@ -1,7 +1,7 @@
 'use client'
 import { signOut, useSession } from "@/lib/auth-client";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import React from "react";
 import { FaReply, FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -13,7 +13,8 @@ const AuthItemsCard = ({setShowAuthItems}:{setShowAuthItems:React.Dispatch<React
         const { data: resData, error } = await signOut()
         if (resData) {
             toast.success('সফলভাবে সাইন আউট সম্পন্ন হয়েছে!')
-            redirect('/')
+            // redirect('/')
+            window.location.replace('/');
         }
         if (error) {
             toast.error('দুঃখিত সাইন আউট সম্পন্ন হয় নি!')

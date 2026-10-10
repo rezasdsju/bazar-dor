@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 import Image from "next/image";
 import { FaReply } from "react-icons/fa";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 
 const MyProfilePage = () => {
@@ -34,7 +34,8 @@ const MyProfilePage = () => {
         const { data: resData, error } = await signOut()
         if (resData) {
             toast.success('সফলভাবে সাইন আউট সম্পন্ন হয়েছে!')
-            redirect('/')
+            // redirect('/')
+            window.location.replace('/');
         }
         if (error) {
             toast.error('দুঃখিত সাইন আউট সম্পন্ন হয় নি!')

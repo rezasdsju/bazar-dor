@@ -7,7 +7,7 @@ import React from "react";
 // import {useState} from 'react'
 import { signIn, signUp } from "@/lib/auth-client";
 import { toast } from "react-toastify";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 const SignUpPage = () => {
     // const [showPassword, setShowPassword] = useState(false)
@@ -35,7 +35,8 @@ const SignUpPage = () => {
         if (resData) {
             toast.success('সাইন আপ সফলভাবে সম্পন্ন হয়েছে')
             // redirect('/sign-in')
-            redirect('/')
+            // redirect('/')
+            window.location.replace('/');
         }
         if (error) {
             toast.error('সাইন আপ সম্পন্ন হয়নি')
