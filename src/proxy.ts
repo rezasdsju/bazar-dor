@@ -7,13 +7,16 @@ export async function proxy(request: NextRequest) {
         headers: await headers()
     })
 
-    if(!session) {
-        return NextResponse.redirect(new URL("/sign-in", request.url));
+    if (!session) {
+        const signInUrl = new URL("/sign-in", request.url);
+        signInUrl.searchParams.set("message", "unauthorized");
+
+        return NextResponse.redirect(signInUrl);
     }
 
     return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/my-profile","/productDetail/:path*"], // Specify the routes the middleware applies to
+    matcher: ["/my-profile", "/productDetail/:path*"], // Specify the routes the middleware applies to
 };

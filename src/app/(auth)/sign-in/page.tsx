@@ -3,43 +3,55 @@ import { AiFillGithub } from "react-icons/ai";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { signIn } from "@/lib/auth-client";
 import { toast } from "react-toastify";
-import { redirect } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
+
+
+
 
 const SignInPage = () => {
-    const handleSignIn = async(e:React.SubmitEvent<HTMLFormElement>)=>{
+const searchParams = useSearchParams();
+const router = useRouter();
+
+useEffect(() => {
+    if (searchParams.get("message") === "unauthorized") {
+        toast.info("অনুগ্রহ করে সাইন ইন করুন", { toastId: "unauthorized" });
+        router.replace("/sign-in");
+    }
+}, [searchParams, router]);
+    const handleSignIn = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
-        const userData = Object.fromEntries(formData.entries()) as {email:string, password:string}
-        console.log('userData: ',userData)
-        const {data:resData, error} = await signIn.email({
-            email:userData.email,
-            password:userData.password,
-            
+        const userData = Object.fromEntries(formData.entries()) as { email: string, password: string }
+        console.log('userData: ', userData)
+        const { data: resData, error } = await signIn.email({
+            email: userData.email,
+            password: userData.password,
+
         })
-        console.log('resData: ',resData)
-        if (resData){
+        console.log('resData: ', resData)
+        if (resData) {
             toast.success('সফলভাবে সাইন ইন সম্পন্ন হয়েছে')
             redirect('/')
         }
-        if (error){
+        if (error) {
             toast.error('সাইন ইন সম্পন্ন হয় নি')
         }
     }
 
-    const handleGoogleSignIn = async()=>{
+    const handleGoogleSignIn = async () => {
         const data = await signIn.social({
-            provider:'google'
+            provider: 'google'
         })
-        console.log('google sign in data: ',data)
+        console.log('google sign in data: ', data)
     }
-    const handleGithubSignIn = async()=>{
+    const handleGithubSignIn = async () => {
         const data = await signIn.social({
-            provider:'github'
+            provider: 'github'
         })
-        console.log('github sign in data: ',data)
+        console.log('github sign in data: ', data)
     }
     return (
         <div className="max-w-120 mx-auto my-10 px-2">
@@ -54,10 +66,10 @@ const SignInPage = () => {
 
 
                         <label className="label">ইমেইল</label>
-                        <input name="email" type="email" className="input w-full" placeholder="you@example.com" required/>
+                        <input name="email" type="email" className="input w-full" placeholder="you@example.com" required />
 
                         <label className="label">পাসওয়ার্ড</label>
-                        <input name="password" type="password" className="input w-full" placeholder="কমপক্ষে ৮ অক্ষর" required/>
+                        <input name="password" type="password" className="input w-full" placeholder="কমপক্ষে ৮ অক্ষর" required />
 
                         <button type="submit" className="btn bg-green-600 text-white mt-4">সাইন ইন</button>
                     </fieldset>
