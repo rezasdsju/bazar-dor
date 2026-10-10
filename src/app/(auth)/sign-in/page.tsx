@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { signIn } from "@/lib/auth-client";
 import { toast } from "react-toastify";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 
 
@@ -34,7 +34,8 @@ useEffect(() => {
         console.log('resData: ', resData)
         if (resData) {
             toast.success('সফলভাবে সাইন ইন সম্পন্ন হয়েছে')
-            redirect('/')
+            // redirect('/')
+            window.location.replace('/');
         }
         if (error) {
             toast.error('সাইন ইন সম্পন্ন হয় নি')
