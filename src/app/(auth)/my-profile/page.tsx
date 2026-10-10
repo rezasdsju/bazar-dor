@@ -13,10 +13,12 @@ const MyProfilePage = () => {
     const handleUpdateUser = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
-        const userData = Object.fromEntries(formData.entries()) as { image: string, name: string }
+        // const userData = Object.fromEntries(formData.entries()) as { image: string, name: string }
+        const name = formData.get('name') as string
+        const image = formData.get('image') as string
         const { data: resData, error } = await updateUser({
-            name: userData.name,
-            image: userData.image
+            name: name.trim() || session?.user?.name ||'',
+            image: image.trim() || session?.user?.image || ''
         })
         if (resData) {
             toast.success('সফলভাবে প্রোফাইল আপডেট সম্পন্ন হয়েছে')
@@ -74,7 +76,7 @@ const MyProfilePage = () => {
                         <label className="label">নাম</label>
                         <input name="name" type="text" className="input w-full" placeholder="আহমেদ খালিল" />
 
-                        <label className="label">ছবি</label>
+                        <label className="label">ছবির লিংক</label>
                         <input name="image" type="url" className="input w-full" placeholder="ছবির ইউ আর এল" />
 
 
