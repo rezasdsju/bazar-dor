@@ -44,7 +44,7 @@ const MyProfilePage = () => {
                 <h2 className="font-bold text-2xl">আমার প্রোফাইল</h2>
                 <p className="text-neutral-500">আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
             </div>
-            <div className="flex items-center justify-between border border-gray-200 rounded-2xl bg-white px-3 py-4 my-5">
+            <div className="flex flex-col min-[385px]:flex-row gap-4 min-[385px]:gap-0 items-center justify-between border border-gray-200 rounded-2xl bg-white px-3 py-4 my-5">
                 <div className="flex items-center gap-2">
                     {
                         session?.user?.image &&
