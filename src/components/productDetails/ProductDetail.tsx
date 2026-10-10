@@ -10,11 +10,23 @@ const ProductDetail = async ({ params }: { params: { productId: string } }) => {
     }
     const product: IProduct = await res.json()
 
+    const unitLabel = product.unit === 'kg' ? 'কেজি' : product.unit === 'dozen' ? 'ডজন' : product.unit === 'litre' ? 'লিটার' : 'পিস';
+    const productTypeLabel = product.categoryNameBn === 'ডিম-দুধ'
+        ? product.nameBn === 'ডিম'
+            ? 'ডিম'
+            : product.nameBn === 'দুধ'
+                ? 'দুধ'
+                : product.nameBn === 'দই'
+                    ? 'দই'
+                    : product.nameBn === 'মাখন (১০০ গ্রাম)'
+                        ? 'মাখন'
+                        : product.categoryNameBn
+        : product.categoryNameBn;
 
     const minPrices = product.markets.map((market) => market.min)
     const minPrice = Math.min(...minPrices)
     const maxPrices = product.markets.map((market) => market.max)
-    const maxPrice = Math.min(...maxPrices)
+    const maxPrice = Math.max(...maxPrices)
     const totalPrice = [...minPrices, ...maxPrices]
     const averagePrice = Math.ceil(totalPrice.reduce((total, price) => (total + price), 0) / totalPrice.length)
     const sortedMarrketsByLowestPrice = [...product.markets].sort((a, b) => a.min - b.min)
@@ -33,7 +45,7 @@ const ProductDetail = async ({ params }: { params: { productId: string } }) => {
                             <span className="bg-gray-100 px-4 py-3 rounded-2xl border border-gray-200">{product.image}</span>
                             <div>
                                 <h2 className="text-2xl font-bold">{product.nameBn}</h2>
-                                <p className="text-xs text-neutral-400">প্রতি কেজি · {product.categoryNameBn}</p>
+                                <p className="text-xs text-neutral-400">প্রতি {unitLabel} · {productTypeLabel}</p>
                                 {product.change.dir === 'up' && <p className="text-sm text-neutral-500">গতকালের তুলনায় আজ দাম বেড়েছে · {(product.today - product.yesterday).toLocaleString('bn-BD')} টাকা</p>}
                                 {product.change.dir === 'down' && <p className="text-sm text-neutral-500">গতকালের তুলনায় আজ দাম কমেছে · {(Math.abs(product.today - product.yesterday)).toLocaleString('bn-BD')} টাকা</p>}
                                 {product.change.dir === 'flat' && <p className="text-sm text-neutral-500">গতকালের দাম অপরিবর্তিত রয়েছে</p>}
@@ -69,7 +81,7 @@ const ProductDetail = async ({ params }: { params: { productId: string } }) => {
                             <div className="px-3 py-2 border border-gray-200 rounded-2xl">
                                 <h4 className="text-xs">গড় দাম</h4>
                                 <p className="text-green-700 font-semibold">{averagePrice} <span className="text-sm">টাকা</span></p>
-                                <p className='text-xs text-neutral-500'>প্রতি কেজি-এর হিসাবে</p>
+                                <p className='text-xs text-neutral-500'>প্রতি {product.unit === 'kg' ? 'কেজি' : product.unit === 'dozen' ? ' ডজন' : product.unit === 'litre' ? 'লিটার' : 'পিস'}-এর হিসাবে</p>
                             </div>
                         </div>
 
