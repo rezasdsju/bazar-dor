@@ -26,7 +26,7 @@ const AuthItemsCard = ({setShowAuthItems}:{setShowAuthItems:React.Dispatch<React
                     <h3>{session?.user?.name}</h3>
                     <p className="text-neutral-400 text-sm">{session?.user?.email}</p>
                 </div>
-                <div className="flex items-center gap-1">
+                <div onClick={()=>setShowAuthItems(false)} className="flex items-center gap-1">
                     <span><FaUser /></span>
                     <Link href={`/my-profile`}><span className="font-bold cursor-pointer">আমার প্রোফাইল</span></Link>
                 </div>
