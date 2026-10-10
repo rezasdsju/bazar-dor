@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 
 import Image from "next/image";
 import { FaReply } from "react-icons/fa";
+import Link from "next/link";
+import { FaArrowLeftLong } from "react-icons/fa6";
 // import { redirect } from "next/navigation";
 
 
@@ -17,7 +19,7 @@ const MyProfilePage = () => {
         const name = formData.get('name') as string
         const image = formData.get('image') as string
         const { data: resData, error } = await updateUser({
-            name: name.trim() || session?.user?.name ||'',
+            name: name.trim() || session?.user?.name || '',
             image: image.trim() || session?.user?.image || ''
         })
         if (resData) {
@@ -84,6 +86,15 @@ const MyProfilePage = () => {
                         <button className="btn bg-green-600 mt-4 text-white">আপডেট</button>
                     </fieldset>
                 </form>
+            </div>
+
+
+            <div className="flex items-center justify-center my-7">
+                <Link href='/' className="flex items-center gap-1">
+                    <span><FaArrowLeftLong /></span>
+                    <span className="text-neutral-400"> হোম পেজে ফিরে যান</span>
+                </Link>
+
             </div>
         </div>
     );

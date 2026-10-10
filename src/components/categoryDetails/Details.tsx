@@ -1,12 +1,14 @@
 import type { IProduct } from "@/types/type.product";
 import SortProduct from "./SortProduct";
 import { notFound } from "next/navigation";
-const Details = async({params}:{params:{slug:string}}) => {
+import Link from "next/link";
+import { FaArrowLeftLong } from "react-icons/fa6";
+const Details = async ({ params }: { params: { slug: string } }) => {
     'use cache'
     const { slug } = await params
     const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products?category=${slug}`)
     const products: IProduct[] = await res.json()
-    if (!products || products.length === 0){
+    if (!products || products.length === 0) {
         notFound()
     }
     const categoryName = products[0].categoryNameBn
@@ -22,7 +24,13 @@ const Details = async({params}:{params:{slug:string}}) => {
                 </div>
                 <SortProduct products={products}></SortProduct>
 
+                <div className="flex items-center justify-center my-7">
+                    <Link href='/' className="flex items-center gap-1">
+                        <span><FaArrowLeftLong /></span>
+                        <span className="text-neutral-400"> হোম পেজে ফিরে যান</span>
+                    </Link>
 
+                </div>
             </div>
         </div>
     );
