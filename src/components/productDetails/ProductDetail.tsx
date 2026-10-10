@@ -28,7 +28,7 @@ const ProductDetail = async ({ params }: { params: { productId: string } }) => {
                     <Link href={`/productDetail/${product.id}`}>{product.nameBn}</Link>
                 </div>
                 <div>
-                    <div className="flex items-center justify-between   border border-gray-200 bg-white px-3 py-5 rounded-2xl">
+                    <div className="flex flex-col min-[380px]:flex-row gap-5 min-[380px]:gap-0 items-center justify-between   border border-gray-200 bg-white px-3 py-5 rounded-2xl">
                         <div className="flex items-center  gap-2">
                             <span className="bg-gray-100 px-4 py-3 rounded-2xl border border-gray-200">{product.image}</span>
                             <div>
@@ -42,7 +42,7 @@ const ProductDetail = async ({ params }: { params: { productId: string } }) => {
                         <div>
                             <div className="bg-gray-100 border border-gray-200 px-3 py-2 mx-2 rounded-2xl">
                                 <h3 className="text-neutral-500">আজকের দাম</h3>
-                                <p className="font-bold">{product.today.toLocaleString('bn-BD')}</p>
+                                <p className="font-bold text-center">{product.today.toLocaleString('bn-BD')}</p>
                                 <p className="text-neutral-500">টাকা/{product.unit === 'kg' ? 'কেজি' : product.unit === 'dozen' ? ' ডজেন' : product.unit === 'litre' ? 'লিটার' : 'পিস'}</p>
                                 <div className="flex items-center justify-center gap-1 bg-gray-100 px-2 min-[450px]:px-5 py-1 rounded-2xl">
                                     <span className={`text-[9px] ${product.change.dir === 'up' ? 'text-red-700' : product.change.dir === 'down' ? 'text-green-700' : 'text-black'}`}>{product.change.dir === 'up' ? <IoTriangleSharp /> : product.change.dir === 'down' ? <IoTriangleSharp className="rotate-180" /> : '---'}</span>
