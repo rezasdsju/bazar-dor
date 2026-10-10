@@ -51,8 +51,8 @@ const MyProfilePage = () => {
                 <div className="flex items-center gap-2">
                     {
                         session?.user?.image &&
-                        <div className="bg-gray-100 border border-gray-200 rounded-xl px-3 py-2 ">
-                            <Image src={session?.user?.image} alt={session?.user?.name} width={40} height={40} className="rounded-xl"></Image>
+                        <div className="bg-gray-100 border border-gray-200 rounded-xl px-1 py-1 ">
+                            <Image src={session?.user?.image} alt={session?.user?.name} width={50} height={50} className="rounded-xl"></Image>
                         </div>
                     }
                     <div>
