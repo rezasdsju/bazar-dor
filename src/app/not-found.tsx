@@ -8,7 +8,6 @@ import { IoHomeOutline, IoNewspaperOutline } from "react-icons/io5";
 export default function NotFound() {
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center px-4 py-12 text-center">
-      {/* Animated 404 */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -36,7 +35,6 @@ export default function NotFound() {
         </motion.span>
       </motion.div>
 
-      {/* Message */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -52,7 +50,6 @@ export default function NotFound() {
         </p>
       </motion.div>
 
-      {/* Home Button */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
