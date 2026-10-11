@@ -9,7 +9,7 @@ interface INav {
 }
 const NavLinks = async () => {
     'use cache'
-    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/categories')
+    const res = await fetch(`${process.env.BASE_API_URL}/categories`)
     const navs: INav[] = await res.json()
     return (
         <div className="border-t border-b  border-gray-100 py-4 px-2 ">
