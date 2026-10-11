@@ -5,7 +5,7 @@ import 'react-marquee-text/dist/styles.css'
 import type { IProduct } from "@/types/type.product";
 const Marquee = async () => {
     'use cache'
-    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products')
+    const res = await fetch(`${process.env.BASE_API_URL}/products`)
     const products = await res.json()
 
     const toBanglaNumber = (value: number) => {

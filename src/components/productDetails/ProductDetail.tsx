@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { IoTriangleSharp } from "react-icons/io5";
 const ProductDetail = async ({ params }: { params: { productId: string } }) => {
     const { productId } = await params
-    const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products/${productId}`)
+    const res = await fetch(`${process.env.BASE_API_URL}/products/${productId}`)
     if (!res.ok){
         notFound()
     }
