@@ -26,7 +26,7 @@ const AuthButtons = () => {
                     {
                         session?.user?.image?
                         <div className="avatar">
-                            <div className="ring-primary ring-offset-base-100 max-w-9 rounded-full ring ring-offset-1">
+                            <div className="ring-primary ring-offset-base-100 max-w-8 rounded-full ring ring-offset-1">
                                 <Image src={session?.user?.image} alt='profileImage' width={20} height={20} />
                             </div>
                         </div>:
